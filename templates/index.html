@@ -5,6 +5,11 @@
 <html>
   <head>
     <title>{{botName}}</title>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="ES">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="googlebot" content="noindex,nofollow">
     <link rel="icon" type="image/png" href="/static/bot.png">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,18 +27,22 @@
     </script>
 
   </head>
-  <body background="{{chatBG}}" onload="getFirstResponse('Hello');">
+  <body background="{{chatBG}}" onload="getFirstResponse('Hola');">
     <div class="messagecontainer">
-      <h1>{{botName}}</h1><hr>
+<script type="text/javascript">
+    if (top.location == self.location) {
+        document.write('<h1>{{botName}}</h1><hr>');
+    }
+</script>
       <div id="chatbox">
         <!--Nothing here in the beginning-->
       </div>
       <div id="typing">
-        <table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top"><img src="/static/typingnow.gif"></td></tr></table>
+        <table class="botText" border="0" width="95%"><tr class=""><td valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"><img src="/static/typingnow.gif"></td></tr></table>
       </div>
       <div id="userInput">
-        <input id="textInput" type="text" name="msg" placeholder="Message" autofocus>
-        <input id="buttonInput" type="submit" value="Send">
+        <input id="textInput" type="text" name="msg" placeholder="Mensaje" autofocus>
+        <input id="buttonInput" type="submit" value="Enviar">
       </div>
 
 
@@ -46,7 +55,7 @@
 
         function getFirstResponse(firstText) {
           $.get("/get", { msg: firstText }).done(function(data) {
-            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+            var botHtml = '<table class="botText" border="0" width="85%"><tr class="latestmsg"><td valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";
             playAudio2();
             $("#chatbox").append(botHtml);
@@ -58,7 +67,7 @@
         }
         function getBotResponse() {
           $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+            var botHtml = '<table class="botText" border="0" width="85%"><tr class="latestmsg"><td valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";
             playAudio2();
             $("#chatbox").append(botHtml);
@@ -67,6 +76,10 @@
             document.getElementById("textInput").focus();
             //document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
           });
+
+          $('html, body').animate({
+            scrollTop: $("#typing").offset().top
+          }, 1500);
         }
 
         function chatSuggest(firstText) {
@@ -76,7 +89,7 @@
           document.getElementById('typing').style.visibility = "visible";
 
           $.get("/get", { msg: firstText }).done(function(data) {
-            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+            var botHtml = '<table class="botText" border="0" width="85%"><tr class="latestmsg"><td valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";
             playAudio2();
             $("#chatbox").append(botHtml);
@@ -85,6 +98,10 @@
             document.getElementById("textInput").focus();
             //document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
           });
+
+          $('html, body').animate({
+            scrollTop: $("#typing").offset().top
+          }, 1500);
         }
 
         $("#textInput").keypress(function(e) {
@@ -134,9 +151,9 @@
 <!--<a class="chatSuggest" onclick="$(this).hide(); chatSuggest('Tell me about AI')";>Tell me about AI</a>-->
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c3e0bc516297007"></script>
+    <!--script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c3e0bc516297007"></script-->
     <script type="text/javascript">
-var addthis_share = addthis_share || {}
+/*var addthis_share = addthis_share || {}
 addthis_share = {
 	passthrough : {
 		twitter: {
@@ -144,7 +161,7 @@ addthis_share = {
 			text: "Chat with {{botName}}, my #Python powered #AI ChatBot: "
 		}
 	}
-}
+}*/
 </script>
   </body>
 
