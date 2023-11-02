@@ -1,6 +1,10 @@
 body {
     font-family: Garamond;
-    background-color: #000;
+
+    background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(1.5em 6.28571em at -0.45em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 1.5em 5.5em, radial-gradient(2.3em 4.57143em at 2.99em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(2.3em 4.57143em at -0.69em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 2.3em 4em, radial-gradient(3.5em 6.28571em at 4.55em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(3.5em 6.28571em at -1.05em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 3.5em 5.5em, radial-gradient(#045fb4, #00ced1);
+    background-color: mediumspringgreen;
+    background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em, 3.5em 11em, 100% 100%;
+    background-repeat: repeat;
 }
 
 h1 {
@@ -19,10 +23,12 @@ h3 {
 }
 
 .messagecontainer{
-	width: 100%;
+	/*width: 100%; change 20231006 */
+	width: auto;
 	max-width: 750px;
 	margin-left: auto; margin-right: auto;
-  background-color: #ccc;
+  background-color: #fff;
+  opacity: 0.9;
   padding:3px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
@@ -48,7 +54,10 @@ h3 {
     background-color: #fff;
     margin-left: auto;
     margin-right: auto;
-    /*width: 40%;*/
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
     margin-top: 10px;
     border: 2px solid white;
     -webkit-border-radius: 10px;
@@ -57,7 +66,7 @@ h3 {
 }
 
 #textInput {
-    width: 90%;
+    width: 70%;
     border: none;
     border-bottom: 3px solid #009688;
     font-family: monospace;
@@ -71,24 +80,28 @@ h3 {
 }
 
 .chatSuggest{
+    font-size:13px;
     padding: 3px;
     margin-top: 15px;
+    line-height: 2em;
     margin-right: 15px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     -webkit-box-shadow: 2px 2px 2px 1px #545454;
     box-shadow: 2px 2px 2px 1px #545454;
-    background: #ffff00;
+    /*background: #ffff00;*/
+    background: #ffffff;
     cursor: pointer;
 }
 
 .userText {
     color: white;
     font-family: monospace;
-    font-size: 17px;
+    font-size: 1em;
     text-align: left;
-    line-height: 20px;
-    background-color: #0000FF;
+    line-height: 1.5em;
+    /*background-color: #0000FF;*/
+    background-color: #045fb4;
     padding: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -96,12 +109,13 @@ h3 {
 }
 
 .botText {
-    background-color: #F2B100;
+    /*background-color: #F2B100;*/
+    background-color: #04b4a499;
     color: black;
     font-family: monospace;
-    font-size: 17px;
+    font-size: 1em;
     text-align: left;
-    line-height: 30px;
+    line-height: 1.5em;
 	  -webkit-border-radius: 10px;
     border-radius: 10px;
 	  padding: 5px;
