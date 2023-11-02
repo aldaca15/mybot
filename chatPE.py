@@ -27,7 +27,7 @@ app = Flask(__name__)
 def tryGoogle(myQuery):
     myQuery = myQuery.replace("'", "%27")
     showQuery = urllib.parse.unquote(myQuery)
-    return "<br><br>You can try this from my friend Google: <a target='_blank' href='https://www.google.com/search?q=" + myQuery + "'>" + showQuery + "</a>"
+    return "<br><br>Tal vez deberías intentar buscar en mi amigo Google: <a target='_blank' href='https://www.google.com/search?q=site:terapiaenagua.com+" + myQuery + "'>" + showQuery + "</a>"
 
 @app.route("/")
 def home():
@@ -41,6 +41,8 @@ def get_bot_response():
         botReply = str(getResponse('IDKnull')) ##Send the i don't know code back to the DB
         if useGoogle == "yes":
             botReply = botReply + tryGoogle(userText)
+    elif botReply == "IKrespNumber":
+        botReply = str(getResponse('IKnumber')) ##Send the i know number back to the DB
     elif botReply == "getTIME":
         botReply = getTime()
         print(getTime())

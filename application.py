@@ -24,10 +24,12 @@ try:
 except IOError:
     file = open('BotLog.csv', 'w')
 
+
 def tryGoogle(myQuery):
     myQuery = myQuery.replace("'", "%27")
     showQuery = urllib.parse.unquote(myQuery)
-    return "<br><br>You can try this from my friend Google: <a target='_blank' href='https://www.google.com/search?q=" + myQuery + "'>" + showQuery + "</a>"
+    return "<br><br>Tal vez puedas tratar de obtener mas info de mi amigo Google: <a target='_blank' href='https://www.google.com/search?q=" + myQuery + "'>" + showQuery + "</a>"
+
 
 @application.route("/")
 def home():

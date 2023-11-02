@@ -9,7 +9,7 @@ from botConfig import botTimeZone
 def getTime():
     now = datetime.now(pytz.timezone(botTimeZone))
     #now = datetime.utcnow()
-    myTimeZone = " EST"
+    myTimeZone = " PST"
     mm = str(now.month)
     dd = str(now.day)
     yyyy = str(now.year)
@@ -26,7 +26,7 @@ def getTime():
     if now.hour > 12:
         hour = str(now.hour - 12)
     weekday = calendar.day_name[mydate.weekday()]
-    return "The time is now " + hour + ":" + minute + ampm + myTimeZone
+    return "La hora es " + hour + ":" + minute + ampm + myTimeZone
 
 def getDate():
     now = datetime.now(pytz.timezone(botTimeZone))
@@ -37,9 +37,9 @@ def getDate():
     minute = str(now.minute)
     second = str(now.second)
     weekday = now.weekday()
-    week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    week = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']
     weekdayName = week[weekday]
-    return "Today is " + weekdayName + ", " + mm + "/" + dd + "/" + yyyy
+    return "Hoy es " + weekdayName + ", " + mm + "/" + dd + "/" + yyyy
 
 print("Hello there!")
 print(getTime())
